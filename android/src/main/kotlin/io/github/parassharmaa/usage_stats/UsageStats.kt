@@ -13,7 +13,7 @@ object UsageStats {
 
     fun queryConfig(context: Context, startDate: Long, endDate: Long): ArrayList<Map<String, String>> {
         var usm = context.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-        var configs: List<ConfigurationStats> = usm.queryConfigurations(UsageStatsManager.INTERVAL_BEST, startDate, endDate)
+        var configs: List<ConfigurationStats> = usm.queryConfigurations(UsageStatsManager.INTERVAL_DAILY, startDate, endDate)
 
         var configList: ArrayList<Map<String, String>> = arrayListOf()
 
@@ -55,7 +55,7 @@ object UsageStats {
     @RequiresApi(Build.VERSION_CODES.P)
     fun queryEventStats(context: Context, startDate: Long, endDate: Long): ArrayList<Map<String, String>> {
         var usm = context.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-        var eventStats = usm.queryEventStats(UsageStatsManager.INTERVAL_BEST, startDate, endDate)
+        var eventStats = usm.queryEventStats(UsageStatsManager.INTERVAL_DAILY, startDate, endDate)
 
         var eventList: ArrayList<Map<String, String>> = arrayListOf()
 
@@ -75,7 +75,7 @@ object UsageStats {
 
     fun queryUsageStats(context: Context, startDate: Long, endDate: Long): ArrayList<Map<String, String>> {
         var usm = context.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-        var usageStats = usm.queryUsageStats(UsageStatsManager.INTERVAL_BEST, startDate, endDate)
+        var usageStats = usm.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, startDate, endDate)
 
 
         var usageList: ArrayList<Map<String, String>> = arrayListOf()
