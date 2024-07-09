@@ -105,11 +105,12 @@ object UsageStats {
         var usageList = mutableMapOf<String, Map<String, String>>()
 
         for (packageName in usageStats.keys) {
+            var packageUsage = usageStats[packageName]
+
             if (context.packageManager.getLaunchIntentForPackage(packageName) == null || packageUsage?.totalTimeInForeground == 0L) {
                 continue;
             }
 
-            var packageUsage = usageStats[packageName]
             usageList[packageName] = mapOf(
                     "firstTimeStamp" to packageUsage?.firstTimeStamp.toString(),
                     "lastTimeStamp" to packageUsage?.lastTimeStamp.toString(),
