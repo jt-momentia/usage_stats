@@ -77,10 +77,13 @@ object UsageStats {
         var usm = context.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
         var usageStats = usm.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, startDate, endDate)
 
-
         var usageList: ArrayList<Map<String, String>> = arrayListOf()
 
         for (usage in usageStats) {
+            if (context.packageManager.getLaunchIntentForPackage(usage.packageName) == null || usage.totalTimeInForeground == 0L) {
+                continue;
+            }
+
             var u: Map<String, String> = mapOf(
                     "firstTimeStamp" to usage.firstTimeStamp.toString(),
                     "lastTimeStamp" to usage.lastTimeStamp.toString(),
@@ -101,6 +104,10 @@ object UsageStats {
         var usageList = mutableMapOf<String, Map<String, String>>()
 
         for (packageName in usageStats.keys) {
+            if (context.packageManager.getLaunchIntentForPackage(packageName) == null || packageUsage?.totalTimeInForeground == 0L) {
+                continue;
+            }
+
             var packageUsage = usageStats[packageName]
             usageList[packageName] = mapOf(
                     "firstTimeStamp" to packageUsage?.firstTimeStamp.toString(),
