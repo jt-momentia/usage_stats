@@ -80,10 +80,6 @@ object UsageStats {
         var usageList: ArrayList<Map<String, String>> = arrayListOf()
 
         for (usage in usageStats) {
-            if (context.packageManager.getLaunchIntentForPackage(usage.packageName) == null || usage.totalTimeInForeground == 0L) {
-                continue;
-            }
-
             var u: Map<String, String> = mapOf(
                     "firstTimeStamp" to usage.firstTimeStamp.toString(),
                     "lastTimeStamp" to usage.lastTimeStamp.toString(),
@@ -106,11 +102,6 @@ object UsageStats {
 
         for (packageName in usageStats.keys) {
             var packageUsage = usageStats[packageName]
-
-            if (context.packageManager.getLaunchIntentForPackage(packageName) == null || packageUsage?.totalTimeInForeground == 0L) {
-                continue;
-            }
-
             usageList[packageName] = mapOf(
                     "firstTimeStamp" to packageUsage?.firstTimeStamp.toString(),
                     "lastTimeStamp" to packageUsage?.lastTimeStamp.toString(),
