@@ -89,7 +89,8 @@ object UsageStats {
                     "lastTimeStamp" to usage.lastTimeStamp.toString(),
                     "lastTimeUsed" to usage.lastTimeUsed.toString(),
                     "packageName" to usage.packageName.toString(),
-                    "totalTimeInForeground" to usage.totalTimeInForeground.toString()
+                    "totalTimeInForeground" to usage.totalTimeInForeground.toString(),
+                    "totalTimeVisible" to usage.totalTimeVisible.toString()
             )
             usageList.add(u)
         }
@@ -114,7 +115,8 @@ object UsageStats {
                     "lastTimeStamp" to packageUsage?.lastTimeStamp.toString(),
                     "lastTimeUsed" to packageUsage?.lastTimeUsed.toString(),
                     "packageName" to packageUsage?.packageName.toString(),
-                    "totalTimeInForeground" to packageUsage?.totalTimeInForeground.toString()
+                    "totalTimeInForeground" to packageUsage?.totalTimeInForeground.toString(),
+                    "totalTimeVisible" to packageUsage?.totalTimeVisible.toString()
             )
         }
         return usageList
