@@ -4,7 +4,8 @@ class UsageInfo {
       this.lastTimeStamp,
       this.lastTimeUsed,
       this.packageName,
-      this.totalTimeInForeground});
+      this.totalTimeInForeground,
+      this.totalTimeVisible});
 
   /// Construct class from the json map
   factory UsageInfo.fromMap(Map map) => UsageInfo(
@@ -12,6 +13,7 @@ class UsageInfo {
         lastTimeStamp: map['lastTimeStamp'],
         lastTimeUsed: map['lastTimeUsed'],
         totalTimeInForeground: map['totalTimeInForeground'],
+        totalTimeVisible: map['totalTimeVisible'],
         packageName: map['packageName'],
       );
 
@@ -20,4 +22,5 @@ class UsageInfo {
   final String? lastTimeStamp;
   final String? lastTimeUsed;
   final String? totalTimeInForeground;
+  final String? totalTimeVisible;
 }
